@@ -1,10 +1,13 @@
-# Test de personalitate DISC · Sfera Business
+# Chestionare Sfera Business
 
-Wizard web (doar frontend) pentru testul DISC de 80 de afirmații: o afirmație pe pagină, scor pe cele 4 dimensiuni (Dominant, Influent, Stabil, Conform), grafic și calculul detaliat la final.
+Wizard-uri web (doar frontend): o afirmație pe pagină, rezultatele afișate imediat la final.
 
-- Live: https://adrianflorian.github.io/disc-test/
-- Demo cu răspunsuri aleatorii: https://adrianflorian.github.io/disc-test/#demo
-- Răspunsurile rămân doar în browserul utilizatorului (localStorage). Nimic nu este trimis către un server.
-- Pagina este marcată `noindex`, ca să nu apară în motoarele de căutare.
+- Pagina principală: https://adrianflorian.github.io/disc-test/
+- Test de personalitate DISC (80 de afirmații, 4 dimensiuni): https://adrianflorian.github.io/disc-test/disc.html
+- Chestionar de Change Readiness (35 de afirmații, 7 scale): https://adrianflorian.github.io/disc-test/change-readiness.html
+- Demo cu răspunsuri aleatorii: adăugați `#demo` la adresa oricărui chestionar.
 
-Totul este într-un singur fișier: `index.html`.
+Răspunsurile rămân doar în browserul utilizatorului (localStorage). Nimic nu este trimis către un server.
+Paginile sunt marcate `noindex`, ca să nu apară în motoarele de căutare.
+
+Fiecare pagină este un singur fișier HTML, fără dependențe externe.

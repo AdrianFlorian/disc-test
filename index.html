@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Test de personalitate DISC: 80 de afirmații, câte una pe pagină, cu rezultatele afișate imediat.">
+<meta name="description" content="Chestionare de autoevaluare Sfera Business: testul de personalitate DISC și chestionarul de Change Readiness.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Test de personalitate DISC · Sfera Business">
-<meta property="og:description" content="Descoperă cum acționezi, cum comunici și cum iei decizii, în 80 de afirmații scurte.">
+<meta property="og:title" content="Chestionare de autoevaluare · Sfera Business">
+<meta property="og:description" content="Test de personalitate DISC și Chestionar de Change Readiness. Câte o afirmație pe pagină, cu rezultatele afișate imediat.">
 <meta property="og:image" content="https://adrianflorian.github.io/disc-test/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<title>Test DISC · Sfera Business</title>
+<title>Chestionare · Sfera Business</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='g' cx='35%25' cy='30%25' r='75%25'%3E%3Cstop offset='0' stop-color='%23d7b6e3'/%3E%3Cstop offset='.55' stop-color='%2384329b'/%3E%3Cstop offset='1' stop-color='%234a1459'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='15' fill='url(%23g)'/%3E%3C/svg%3E">
 <style>
 :root{
@@ -40,7 +40,12 @@ header.top{display:flex;align-items:center;justify-content:space-between;padding
 header.top img{height:32px;width:auto;display:block}
 .counter{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
 .counter b{color:var(--ink);font-weight:600}
-body:not([data-screen=quiz]) .counter{visibility:hidden}
+body:not([data-screen=quiz]) .counter{display:none}
+.brand{display:block;line-height:0;border-radius:6px}
+.home-link{font-size:14px;font-weight:500;color:var(--purple);text-decoration:none;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;padding:6px 2px}
+.home-link::before{content:"";width:7px;height:7px;border-left:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-top:1px}
+@media (hover:hover){.home-link:hover{color:var(--purple-dark);text-decoration:underline}}
+body[data-screen=quiz] .home-link{display:none}
 main{flex:1;display:flex;flex-direction:column;justify-content:center;padding:8px 0 24px}
 .screen{display:none}
 .screen.active{display:block;animation:fadeUp .5s ease both}
@@ -72,6 +77,7 @@ main{flex:1;display:flex;flex-direction:column;justify-content:center;padding:8p
 .pill i{width:7px;height:7px;border-radius:50%;background:var(--purple)}
 h1{font-size:clamp(36px,6.2vw,56px);font-weight:500;line-height:1.1;color:var(--ink);letter-spacing:-.025em;margin:0 0 18px}
 .accent{color:var(--purple)}
+h1,.lead{text-wrap:balance}
 .lead{font-size:clamp(17px,2.2vw,19px);margin:0 auto 30px;max-width:600px}
 .howto{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 28px;text-align:left;box-shadow:0 12px 40px rgba(132,50,155,.07);margin-bottom:22px}
 .howto p{margin:0 0 14px}
@@ -259,7 +265,7 @@ footer.foot a:hover{color:var(--purple-dark);text-decoration:underline}
 }
 @media print{
   @page{margin:14mm}
-  .bg-deco,.no-print,.counter{display:none!important}
+  .bg-deco,.no-print,.counter,.home-link{display:none!important}
   body{background:#fff}
   .app{max-width:none;padding:0;min-height:0}
   main{display:block;padding:0}
@@ -272,9 +278,42 @@ footer.foot a:hover{color:var(--purple-dark);text-decoration:underline}
   details.calc summary .chev{display:none}
   .section-title{margin-top:24px}
 }
+
+/* ---------- homepage ---------- */
+.home{text-align:center;max-width:880px;margin:0 auto}
+.home .lead{margin-bottom:38px}
+.tests{display:grid;grid-template-columns:1fr 1fr;gap:20px;text-align:left}
+.tcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;text-decoration:none;color:var(--text);box-shadow:0 12px 40px rgba(132,50,155,.07);transition:transform .2s,box-shadow .2s,border-color .2s}
+@media (hover:hover){.tcard:hover{transform:translateY(-3px);box-shadow:0 18px 50px rgba(132,50,155,.14);border-color:var(--purple-200)}
+.tcard:hover .btn{background:var(--purple-dark);border-color:var(--purple-dark)}.tcard:hover .tri{transform:translateX(3px)}}
+.tcard:focus-visible{outline:3px solid rgba(132,50,155,.35);outline-offset:3px}
+.tviz{height:120px;background:linear-gradient(135deg,#faf6fc,#f0e6f5);display:flex;align-items:flex-end;justify-content:center;gap:10px;padding:0 24px 0;position:relative;overflow:hidden}
+.tviz i{display:block;width:30px;border-radius:7px 7px 0 0}
+.tviz.cr i{width:20px;background:var(--purple);border-radius:5px 5px 0 0}
+.tviz .dash{position:absolute;left:24px;right:24px;top:60px;border-top:2px dashed rgba(132,50,155,.28)}
+.tbody{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1}
+.tkicker{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--purple)}
+.tcard h2{font-size:24px;font-weight:600;color:var(--ink);line-height:1.2;margin:6px 0 8px;letter-spacing:-.01em}
+.tcard p{margin:0 0 14px;font-size:15px}
+.tmeta{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13.5px;color:var(--muted);margin-bottom:16px}
+.tmeta span{display:inline-flex;align-items:center;gap:6px}
+.tmeta svg{color:var(--purple)}
+.tstatus{font-size:13.5px;margin:-4px 0 16px;display:none;align-items:center;gap:10px;color:var(--purple-deep)}
+.tstatus.show{display:flex}
+.tstatus .mini{flex:1;max-width:140px;height:6px;border-radius:99px;background:var(--panel);overflow:hidden}
+.tstatus .mini b{display:block;height:100%;background:var(--purple);border-radius:99px}
+.tcard .btn{margin-top:auto;align-self:flex-start;pointer-events:none}
+.privacy{font-size:13px;color:var(--muted);margin:28px auto 0;display:flex;justify-content:center;align-items:center;gap:8px}
+.privacy svg{color:var(--purple)}
+@media (max-width:720px){
+  .tests{grid-template-columns:1fr;gap:14px}
+  .tviz{height:92px}
+  .tviz .dash{top:46px}
+  .tcard .btn{align-self:stretch}
+}
 </style>
 </head>
-<body data-screen="intro">
+<body data-screen="home">
 
 <div class="bg-deco" aria-hidden="true">
   <svg class="d1" viewBox="0 0 600 600" fill="none">
@@ -296,92 +335,54 @@ footer.foot a:hover{color:var(--purple-dark);text-decoration:underline}
 
 <div class="app">
   <header class="top">
-    <img src="data:image/webp;base64,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" alt="Sfera Business" width="146" height="32">
-    <div class="counter" aria-live="polite"><b id="cNow">1</b> / 80</div>
+    <a class="brand" href="./" aria-label="Sfera Business · Chestionare"><img src="data:image/webp;base64,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" alt="Sfera Business" width="146" height="32"></a>
   </header>
 
   <main>
-    <!-- ================= INTRO ================= -->
-    <section class="screen active" id="intro" aria-labelledby="introTitle">
-      <div class="intro">
-        <div class="pill"><i></i>Evaluare comportamentală</div>
-        <h1 id="introTitle">Test de personalitate <span class="accent">DISC</span></h1>
-        <p class="lead">Descoperă cum acționezi, cum comunici și cum iei decizii, în 80 de afirmații scurte.</p>
+    <section class="home screen active" aria-labelledby="homeTitle">
+      <div class="pill"><i></i>Instrumente de autoevaluare</div>
+      <h1 id="homeTitle">Alegeți <span class="accent">chestionarul</span></h1>
+      <p class="lead">Câte o afirmație pe pagină, cu rezultatele afișate imediat la final.</p>
 
-        <div class="howto">
-          <p>Următoarele afirmații descriu comportamente, atitudini și reacții pe care oamenii le pot avea în diverse situații. Citește cu atenție fiecare afirmație și alege răspunsul care ți se potrivește sau te descrie cel mai bine, pe o scară de la 1 la 5:</p>
-          <div class="honest">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-            <span>Nu există răspunsuri corecte sau greșite. Încearcă doar să te descrii cât de onest și obiectiv poți!</span>
+      <div class="tests">
+        <a class="tcard" href="disc.html" data-key="sfera-disc-v1" data-n="80">
+          <div class="tviz" aria-hidden="true">
+            <span class="dash"></span>
+            <i style="height:78px;background:#c0392b"></i><i style="height:56px;background:#e3a522"></i><i style="height:92px;background:#5b9a3c"></i><i style="height:66px;background:#3a6fc2"></i>
           </div>
-          <div class="scale-row" id="scaleRow"></div>
-        </div>
-
-        <div class="facts">
-          <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg>80 afirmații, câte una pe pagină</span>
-          <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>aproximativ 10–15 minute</span>
-          <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>răspunsurile rămân doar în browserul tău</span>
-        </div>
-
-        <div class="start-row">
-          <div class="name-field">
-            <label for="nameInput">Numele tău <span>(opțional, apare pe rezultate)</span></label>
-            <input id="nameInput" type="text" autocomplete="name" placeholder="ex. Ana Popescu" maxlength="60">
+          <div class="tbody">
+            <div class="tkicker">Personalitate</div>
+            <h2>Test de personalitate DISC</h2>
+            <p>Cum acționezi, cum comunici și cum iei decizii. Profil pe 4 dimensiuni: Dominant, Influent, Stabil și Conform.</p>
+            <div class="tmeta">
+              <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg>80 de afirmații</span>
+              <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>10–15 minute</span>
+            </div>
+            <div class="tstatus"><span class="mini"><b></b></span><span class="stxt"></span></div>
+            <span class="btn primary"><span class="cta">Începe testul</span><span class="tri"></span></span>
           </div>
-          <button class="btn primary" id="startBtn" type="button"><span id="startLbl">Începe testul</span><span class="tri"></span></button>
-        </div>
-        <button class="linkbtn" id="freshBtn" type="button" hidden>sau începe de la zero</button>
-      </div>
-    </section>
+        </a>
 
-    <!-- ================= QUIZ ================= -->
-    <section class="screen" id="quiz" aria-label="Chestionar">
-      <div class="qcard">
-        <div class="progress" role="progressbar" aria-label="Progres" aria-valuemin="0" aria-valuemax="80" aria-valuenow="0" id="progBar"><i id="progFill"></i></div>
-        <div class="qbody" id="qbody">
-          <div class="qmeta"><span class="qnum" id="qLabel">Afirmația 1 din 80</span><span id="qLeft"></span></div>
-          <h2 class="statement" id="statement" tabindex="-1"></h2>
-          <div class="options" id="options" role="radiogroup" aria-labelledby="statement"></div>
-        </div>
-        <div class="qnav">
-          <button class="btn ghost" id="prevBtn" type="button" aria-label="Înapoi"><span class="tri back"></span><span class="lbl">Înapoi</span></button>
-          <button class="btn primary" id="nextBtn" type="button" disabled><span id="nextLbl">Următoarea</span><span class="tri"></span></button>
-        </div>
-      </div>
-      <p class="hint">Poți răspunde și din tastatură: <kbd>1</kbd>–<kbd>5</kbd> pentru răspuns, <kbd>←</kbd> <kbd>→</kbd> pentru navigare.</p>
-    </section>
-
-    <!-- ================= RESULTS ================= -->
-    <section class="screen" id="results" aria-labelledby="resTitle">
-      <div class="res-head">
-        <div class="pill"><i></i>Test de personalitate DISC</div>
-        <h1 id="resTitle">Rezultatele tale</h1>
-        <p id="resMeta"></p>
+        <a class="tcard" href="change-readiness.html" data-key="sfera-cr-v1" data-n="35">
+          <div class="tviz cr" aria-hidden="true">
+            <span class="dash"></span>
+            <i style="height:70px;opacity:.55"></i><i style="height:88px;opacity:.9"></i><i style="height:52px;opacity:.45"></i><i style="height:96px"></i><i style="height:62px;opacity:.6"></i><i style="height:80px;opacity:.8"></i><i style="height:44px;opacity:.4"></i>
+          </div>
+          <div class="tbody">
+            <div class="tkicker">Schimbare</div>
+            <h2>Chestionar de Change Readiness</h2>
+            <p>Cât de pregătit sunteți pentru schimbare. Profil pe 7 scale, de la spirit de aventură la toleranța la ambiguitate.</p>
+            <div class="tmeta">
+              <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg>35 de afirmații</span>
+              <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>5–7 minute</span>
+            </div>
+            <div class="tstatus"><span class="mini"><b></b></span><span class="stxt"></span></div>
+            <span class="btn primary"><span class="cta">Începeți chestionarul</span><span class="tri"></span></span>
+          </div>
+        </a>
       </div>
 
-      <div class="hero" id="hero"></div>
-
-      <div class="section-title">Reprezentarea grafică a scorurilor <span>scară 20–100</span></div>
-      <div class="panel">
-        <div id="chart"></div>
-        <div class="legend" id="legend"><span><b>80–100</b> ridicat</span><span><b>61–79</b> mediu</span><span><b>41–60</b> scăzut</span><span><b>20–40</b> foarte scăzut</span></div>
-      </div>
-
-      <div class="section-title">Scorurile pe fiecare dimensiune</div>
-      <div class="cards" id="cards"></div>
-
-      <div class="section-title">Calculul scorurilor</div>
-      <details class="calc" id="calc">
-        <summary><div>Răspunsurile tale, grupate pe cele 4 coloane<small>Fiecare dimensiune însumează 20 de afirmații (minim 20, maxim 100)</small></div><span class="chev"></span></summary>
-        <div class="calc-grid" id="calcGrid"></div>
-      </details>
-
-      <div class="actions no-print">
-        <button class="btn primary" id="printBtn" type="button">Printează / salvează PDF<span class="tri"></span></button>
-        <button class="btn" id="copyBtn" type="button">Copiază rezultatele</button>
-        <button class="btn ghost" id="restartBtn" type="button">Reia testul</button>
-      </div>
-      <p class="disclaimer">Rezultatele descriu preferințe comportamentale, nu abilități sau valoare personală. Un scor ridicat sau scăzut nu este „bun” sau „rău”; contează cum îți folosești stilul în context.</p>
+      <p class="privacy"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Răspunsurile rămân doar în browser. Nimic nu este trimis către un server.</p>
     </section>
   </main>
 
@@ -390,438 +391,26 @@ footer.foot a:hover{color:var(--purple-dark);text-decoration:underline}
 
 <script>
 (function(){
-"use strict";
-
-/* ---------- content ---------- */
-const Q = [
-  "Vreau să am ultimul cuvânt într-o decizie",
-  "Ceilalți îmi spun că sunt o persoană de încredere",
-  "Am capacitatea să îi fac pe oameni să mă placă",
-  "Când mă apuc de un proiect nou caut toate informațiile de care am nevoie",
-  "Sunt o persoană extrem de exigentă",
-  "Îmi vine ușor să vorbesc în fața oamenilor pe care nu îi cunosc",
-  "Sunt factorul hotărâtor când se ia o decizie",
-  "Prefer să îmi ofer sprijinul celor din jur, decât să le spun ce să facă",
-  "Pentru mine este important să primesc aprecieri pentru ceea ce sunt",
-  "Mi se spune că sunt genul de om care n-ar supăra pe nimeni",
-  "Am talentul de a îi influența pe alții prin persuasiune",
-  "Sunt competitiv și nu-mi place să pierd",
-  "Sunt genul de persoană care citește atent instrucțiunile de folosire",
-  "Îmi place să am claritate despre unde vom ajunge, ce se va întâmpla etc.",
-  "Sunt caracterizat ca fiind sufletul petrecerii",
-  "Am un nivel de energie moderat",
-  "Ceilalți cred despre mine că sunt centrul atenției",
-  "Sunt motivat de stabilitate și de predictibilitate",
-  "Tind să depășesc realizările altor persoane, cu care mă compar",
-  "Prefer să fiu/să lucrez într-un grup mic, alături de persoane cunoscute",
-  "Mă străduiesc să duc lucrurile la bun sfârșit și să nu le las la jumătate",
-  "Îmi place să preiau controlul în diverse situații",
-  "Prefer să fiu membru al unei echipe mai mult decât să conduc echipa",
-  "Îmi aleg vorbele cu grijă, înainte să deschid gura",
-  "Schimbările rapide mă destabilizează",
-  "Argumentez fiecare părere pe care o am",
-  "Folosesc un stil mai agresiv când vreau să îmi impun punctul de vedere",
-  "Am nevoie de multă siguranță",
-  "Sunt directiv și autoritar",
-  "Îmi pregătesc deciziile cu multă atenție la detalii",
-  "Tind să încep să fac mai multe lucruri în același timp, pentru că am multă energie",
-  "Îmi place să verific de mai multe ori detaliile unui proiect",
-  "Îmi este greu să iau decizii",
-  "Sunt foarte atent cu standardele și calitatea rezultatelor mele",
-  "Planific atent pentru a evita surprizele",
-  "Am nevoie ca cei din jurul meu să fie obiectivi când îmi argumentează ceva",
-  "Pot să motivez oamenii cu farmecul meu",
-  "Sunt prudent și precaut în decizii și acțiuni",
-  "Renunț cu greu la punctul meu de vedere, îl apăr cu îndârjire",
-  "Oamenii din jur îmi spun că sunt loial",
-  "Mă motivează să am putere/influență asupra altor oameni",
-  "Ceilalți spun despre mine că îi epuizează energia mea",
-  "Orice conflict mă obosește",
-  "Îmi place să am autoritate în fața celorlalți",
-  "Îmi place să fac lucruri extravagante: să port ținute stridente, să încerc mâncare exotică, să merg în locuri rafinate etc.",
-  "Insist ca oamenii să facă lucrurile așa cum vreau eu",
-  "Respect procedurile stabilite",
-  "Tind să îmi asum riscuri mai mari decât media celorlalți",
-  "Prefer să fiu înconjurat de mulți oameni",
-  "Prefer armonia și liniștea, în locul presiunii pe rezultate",
-  "Îmi place să am o rutină de activități pentru că îmi oferă stabilitate",
-  "Leg relații și parteneriate cu oamenii pe termen lung",
-  "Între performanță și confort emoțional, aleg performanța",
-  "Sunt unul dintre cei care vorbesc cel mai mult într-un grup",
-  "Caut să-mi sprijin ideile cu argumente solide, bazate pe fapte și cifre",
-  "Sunt ferm și hotărât când îmi doresc ceva",
-  "Prefer ordinea și disciplina la locul de muncă",
-  "Iau decizii rapid",
-  "Îmi place să primesc admirația celor din jur",
-  "Caut să respect instrucțiunile și procedurile",
-  "Îmi este ușor să îi critic pe ceilalți sau să le atrag atenția când greșesc",
-  "Mă enervez greu pe oameni și tind mai degrabă să fiu blând cu ei",
-  "Am capacitatea să îi captivez pe oameni, cu prezența și modul meu de a fi",
-  "Sunt o persoană rezervată",
-  "Pot fi caracterizat ca fiind nerăbdător",
-  "Reușesc să ridic energia grupului, atunci când sunt prezent",
-  "Am nevoie de sprijin de la ceilalți",
-  "Îmi place să formez alianțe pentru a-mi atinge scopul",
-  "Îmi place să calculez cu precizie posibilele rezultate",
-  "Impun standarde înalte celor din jur",
-  "Sunt foarte optimist",
-  "Mi s-a spus că mă concentrez prea mult pe detalii",
-  "Acționez spontan",
-  "Am tendința de a controla munca altora",
-  "Îmi exprim ușor emoțiile și gândurile",
-  "Mi s-a dat de înțeles că sunt ușor influențabil de alte persoane",
-  "Îmi planific atent ziua și activitățile",
-  "Îmi place să spun bancuri și să fac mici glume pe seama altora",
-  "Prefer să fiu rezervat și mai retras în grupuri",
-  "Sunt atent să nu fac greșeli în ceea ce lucrez"
-];
-
-/* scoring key, exactly as on the "Reprezentarea grafică a scorurilor" sheet */
-const KEY = {
-  D:[1,5,7,12,19,22,27,29,39,41,44,46,48,53,56,58,61,65,70,74],
-  I:[3,6,9,11,15,17,31,37,42,45,49,54,59,63,66,68,71,73,75,78],
-  S:[2,8,10,14,18,20,23,25,28,33,35,40,43,47,50,52,62,67,76,79],
-  C:[4,13,16,21,24,26,30,32,34,36,38,51,55,57,60,64,69,72,77,80]
-};
-
-const SCALE = [
-  {v:1, l:"Aproape niciodată"},
-  {v:2, l:"Rar"},
-  {v:3, l:"Uneori"},
-  {v:4, l:"Adesea"},
-  {v:5, l:"Aproape întotdeauna"}
-];
-
-const TRAITS = [
-  {k:"D", name:"Dominant", hex:"#c0392b", txt:"#fff",
-   desc:"Direct, hotărât și orientat spre rezultate. Îți plac provocările, deciziile rapide și să ai controlul situației.",
-   watch:"Poți părea nerăbdător sau prea direct. Ascultarea activă îți crește impactul."},
-  {k:"I", name:"Influent", hex:"#e3a522", txt:"#3b2a00",
-   desc:"Sociabil, entuziast și convingător. Aduci energie în grup, legi relații ușor și motivezi prin optimism.",
-   watch:"Poți scăpa din vedere detaliile. Puțină structură te ajută să duci ideile până la capăt."},
-  {k:"S", name:"Stabil", hex:"#5b9a3c", txt:"#fff",
-   desc:"Calm, loial și răbdător. Pui preț pe armonie, predictibilitate și pe relațiile de lungă durată din echipă.",
-   watch:"Poți evita conflictul sau schimbarea. Spune-ți deschis punctul de vedere, chiar și când e incomod."},
-  {k:"C", name:"Conform", hex:"#3a6fc2", txt:"#fff",
-   desc:"Analitic, precis și riguros. Te ghidezi după fapte, standarde înalte și proceduri clare.",
-   watch:"Poți deveni prea critic sau lent în decizii. Acceptă un nivel rezonabil de incertitudine."}
-];
-
-/* bands as drawn on the paper chart: separators sit under 80, above 60 and above 40 */
-function band(s){
-  if (s >= 80) return {id:4, label:"Scor ridicat",       d:"Trăsătură foarte pronunțată, ușor de observat în comportamentul tău de zi cu zi."};
-  if (s >= 61) return {id:3, label:"Scor mediu",         d:"Trăsătură prezentă, pe care o folosești flexibil, în funcție de context."};
-  if (s >= 41) return {id:2, label:"Scor scăzut",        d:"Trăsătură folosită ocazional, mai puțin naturală pentru tine."};
-  return            {id:1, label:"Scor foarte scăzut", d:"Trăsătură puțin prezentă în stilul tău."};
-}
-
-/* ---------- state ---------- */
-const N = Q.length;
-const STORE = "sfera-disc-v1";
-const state = {answers:Array(N).fill(null), idx:0, name:"", done:false, doneAt:null};
-let dir = 1, advanceTimer = null, demo = false;
-
-function save(){ if (demo) return; try { localStorage.setItem(STORE, JSON.stringify(state)); } catch(e){} }
-function loadSaved(){
-  try {
-    const s = JSON.parse(localStorage.getItem(STORE) || "null");
-    if (s && Array.isArray(s.answers) && s.answers.length === N) { Object.assign(state, s); return true; }
-  } catch(e){}
-  return false;
-}
-function reset(){
-  state.answers = Array(N).fill(null); state.idx = 0; state.done = false; state.doneAt = null;
-}
-
-const $ = id => document.getElementById(id);
-const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const answeredCount = () => state.answers.filter(v => v != null).length;
-const firstUnanswered = () => { const i = state.answers.findIndex(v => v == null); return i < 0 ? N - 1 : i; };
-
-function show(id){
-  document.querySelectorAll(".screen").forEach(s => s.classList.toggle("active", s.id === id));
-  document.body.dataset.screen = id;
-  window.scrollTo({top:0});
-}
-
-/* ---------- intro ---------- */
-$("scaleRow").innerHTML = SCALE.map(o => `<div><b>${o.v}</b>${o.l}</div>`).join("");
-
-function initIntro(){
-  const had = loadSaved();
-  $("nameInput").value = state.name || "";
-  const n = answeredCount();
-  if (had && state.done && n === N) {
-    $("startLbl").textContent = "Vezi rezultatele salvate";
-    $("freshBtn").hidden = false;
-  } else if (had && n > 0) {
-    $("startLbl").textContent = `Continuă de la afirmația ${firstUnanswered() + 1}`;
-    $("freshBtn").hidden = false;
-  } else {
-    $("startLbl").textContent = "Începe testul";
-    $("freshBtn").hidden = true;
-  }
-}
-
-$("startBtn").addEventListener("click", () => {
-  state.name = $("nameInput").value.trim();
-  if (state.done && answeredCount() === N) { save(); showResults(); return; }
-  state.idx = answeredCount() > 0 ? firstUnanswered() : 0;
-  save(); startQuiz();
-});
-$("freshBtn").addEventListener("click", () => {
-  state.name = $("nameInput").value.trim();
-  reset(); save(); startQuiz();
-});
-$("nameInput").addEventListener("keydown", e => { if (e.key === "Enter") $("startBtn").click(); });
-
-/* ---------- quiz ---------- */
-const optsEl = $("options");
-optsEl.innerHTML = SCALE.map(o =>
-  `<button type="button" class="opt" role="radio" aria-checked="false" data-v="${o.v}"><span class="n">${o.v}</span><span class="l">${o.l}</span></button>`
-).join("");
-const optBtns = [...optsEl.querySelectorAll(".opt")];
-optBtns.forEach(b => b.addEventListener("click", () => choose(+b.dataset.v)));
-$("prevBtn").addEventListener("click", prev);
-$("nextBtn").addEventListener("click", next);
-
-function startQuiz(){ dir = 1; show("quiz"); renderQ(true); }
-
-function paintState(){
-  const i = state.idx, v = state.answers[i], n = answeredCount();
-  optBtns.forEach(b => {
-    const on = +b.dataset.v === v;
-    b.setAttribute("aria-checked", on ? "true" : "false");
-    b.tabIndex = (v == null ? +b.dataset.v === 1 : on) ? 0 : -1;
+  /* show progress / completed state for each test, read from this browser only */
+  document.querySelectorAll(".tcard").forEach(card => {
+    let s = null;
+    try { s = JSON.parse(localStorage.getItem(card.dataset.key) || "null"); } catch(e){}
+    const total = +card.dataset.n;
+    if (!s || !Array.isArray(s.answers) || s.answers.length !== total) return;
+    const n = s.answers.filter(v => v != null).length;
+    if (n === 0) return;
+    const st = card.querySelector(".tstatus"), cta = card.querySelector(".cta");
+    const formal = card.dataset.key === "sfera-cr-v1";
+    st.classList.add("show");
+    st.querySelector(".mini b").style.width = (n / total * 100) + "%";
+    if (s.done && n === total) {
+      st.querySelector(".stxt").textContent = "Completat · rezultatele sunt salvate";
+      cta.textContent = formal ? "Vedeți rezultatele" : "Vezi rezultatele";
+    } else {
+      st.querySelector(".stxt").textContent = `${n} din ${total} completate`;
+      cta.textContent = formal ? "Continuați" : "Continuă";
+    }
   });
-  $("progFill").style.width = (n / N * 100) + "%";
-  $("progBar").setAttribute("aria-valuenow", n);
-  $("nextBtn").disabled = v == null;
-  $("nextLbl").textContent = i === N - 1 ? "Vezi rezultatele" : "Următoarea";
-  $("prevBtn").disabled = false;
-  const left = N - n;
-  $("qLeft").textContent = left === 0 ? "toate completate ✓" : `${left} ${left === 1 ? "rămasă" : "rămase"}`;
-}
-
-function renderQ(animate){
-  const i = state.idx;
-  $("statement").textContent = Q[i];
-  $("qLabel").textContent = `Afirmația ${i + 1} din ${N}`;
-  $("cNow").textContent = i + 1;
-  paintState();
-  const ae = document.activeElement;
-  if (ae && ae.classList && ae.classList.contains("opt")) $("statement").focus({preventScroll:true});
-  if (animate && window.scrollY > 0) window.scrollTo({top:0, behavior:"smooth"});
-  if (animate) {
-    const qb = $("qbody");
-    qb.classList.remove("in-fwd", "in-back"); void qb.offsetWidth;
-    qb.classList.add(dir > 0 ? "in-fwd" : "in-back");
-  }
-}
-
-function choose(v){
-  state.answers[state.idx] = v; save(); paintState();
-  clearTimeout(advanceTimer);
-  advanceTimer = setTimeout(next, 330);
-}
-function next(){
-  clearTimeout(advanceTimer);
-  if (state.answers[state.idx] == null) return;
-  if (state.idx < N - 1) { state.idx++; dir = 1; save(); renderQ(true); }
-  else finish();
-}
-function prev(){
-  clearTimeout(advanceTimer);
-  if (state.idx > 0) { state.idx--; dir = -1; save(); renderQ(true); }
-  else { initIntro(); show("intro"); }
-}
-function finish(){
-  const miss = state.answers.findIndex(v => v == null);
-  if (miss >= 0) { state.idx = miss; dir = -1; renderQ(true); return; }
-  state.done = true; state.doneAt = Date.now(); save(); showResults();
-}
-
-document.addEventListener("keydown", e => {
-  if (document.body.dataset.screen !== "quiz") return;
-  if (e.metaKey || e.ctrlKey || e.altKey) return;
-  if (e.target.matches && e.target.matches("input,textarea")) return;
-  if (/^[1-5]$/.test(e.key)) { e.preventDefault(); choose(+e.key); }
-  else if (e.key === "ArrowLeft") { e.preventDefault(); prev(); }
-  else if (e.key === "ArrowRight") { e.preventDefault(); if (state.answers[state.idx] != null) next(); }
-  else if (e.key === "Enter" && !(e.target.closest && e.target.closest("button"))) { if (state.answers[state.idx] != null) next(); }
-});
-
-/* ---------- results ---------- */
-function computeScores(){
-  const r = {};
-  TRAITS.forEach(t => { r[t.k] = KEY[t.k].reduce((s, n) => s + state.answers[n - 1], 0); });
-  return r;
-}
-
-let lastScores = null;
-function showResults(){
-  const sc = lastScores = computeScores();
-  const date = new Date(state.doneAt || Date.now()).toLocaleDateString("ro-RO", {day:"numeric", month:"long", year:"numeric"});
-  $("resTitle").textContent = state.name ? `Rezultate DISC: ${state.name}` : "Rezultatele tale";
-  $("resMeta").textContent = `Completat pe ${date} · 80 din 80 de afirmații`;
-
-  /* hero */
-  const ranked = TRAITS.slice().sort((a, b) => sc[b.k] - sc[a.k]);
-  const max = sc[ranked[0].k];
-  const tops = ranked.filter(t => sc[t.k] === max);
-  const rest = ranked.filter(t => sc[t.k] !== max);
-  const badge = tops.length === 1
-    ? `<div class="badge" style="color:${tops[0].hex}">${tops[0].k}</div>`
-    : `<div class="badge" style="font-size:${tops.length > 2 ? 26 : 34}px">${tops.map(t => `<span style="color:${t.hex}">${t.k}</span>`).join("")}</div>`;
-  const second = rest.length ? `<p class="second">Urmat de: ${rest.map(t => `${t.name} (${sc[t.k]})`).join(" · ")}</p>` : "";
-  $("hero").innerHTML = `${badge}
-    <div>
-      <div class="eyebrow">${tops.length === 1 ? "Stilul tău predominant" : "Stiluri predominante, la egalitate"}</div>
-      <h2>${tops.map(t => t.name).join(" & ")}<small>${max} / 100 · ${band(max).label.toLowerCase()}</small></h2>
-      <p>${tops.map(t => t.desc).join(" ")}</p>
-      ${second}
-    </div>`;
-
-  /* cards */
-  $("cards").innerHTML = TRAITS.map(t => {
-    const s = sc[t.k], b = band(s), isTop = s === max;
-    return `<article class="card${isTop ? " top-trait" : ""}" style="--tc:${t.hex};--tt:${t.txt}">
-      <div class="row">
-        <div class="letter">${t.k}</div>
-        <div><h3>${t.name}</h3><span class="chip b${b.id}">${b.label}</span></div>
-        <div class="score">${s}<small>din 100</small></div>
-      </div>
-      <div class="track" aria-hidden="true"><i data-w="${(s - 20) / 80 * 100}"></i><span class="tk" style="left:25%"></span><span class="tk" style="left:50%"></span><span class="tk" style="left:75%"></span></div>
-      <div class="track-l" aria-hidden="true"><span style="left:0">20</span><span style="left:25%">40</span><span style="left:50%">60</span><span style="left:75%">80</span><span style="left:100%">100</span></div>
-      <p>${t.desc}</p>
-      <p class="band-d">${b.d}</p>
-      <div class="watch"><b>De urmărit:</b> ${t.watch}</div>
-    </article>`;
-  }).join("");
-
-  /* calculation table */
-  $("calcGrid").innerHTML = TRAITS.map(t => `
-    <div class="calc-col" style="--tc:${t.hex};--tt:${t.txt}">
-      <h4><span>${t.name}</span><span>${t.k}</span></h4>
-      <table>
-        <thead><tr><th>Afirmația</th><th>Răspuns</th></tr></thead>
-        <tbody>${KEY[t.k].map(n => `<tr title="${esc(Q[n - 1])}"><td>${n}</td><td>${state.answers[n - 1]}</td></tr>`).join("")}</tbody>
-        <tfoot><tr><td>Total</td><td>${sc[t.k]}</td></tr></tfoot>
-      </table>
-    </div>`).join("");
-
-  show("results");
-  renderChart(sc, true);
-  requestAnimationFrame(() => requestAnimationFrame(() => {
-    document.querySelectorAll(".track i").forEach(el => { el.style.width = el.dataset.w + "%"; });
-  }));
-}
-
-function renderChart(sc, animate){
-  const wrap = $("chart");
-  const cw = wrap.clientWidth || 640;
-  const compact = cw < 560;
-  $("legend").classList.toggle("show", compact);
-  wrap.classList.toggle("compact", compact);
-  const W = compact ? 360 : 720, H = compact ? 420 : 460;
-  const padL = 40, padR = compact ? 10 : 150, top = 62, bot = H - 20;
-  const plotW = W - padL - padR;
-  const y = v => bot - (v - 20) / 80 * (bot - top);
-  const x = i => padL + plotW * (i + .5) / 4;
-  const bands = [
-    {from:80, to:100, label:"Scor ridicat",       fill:"#f4ecf8"},
-    {from:60, to:80,  label:"Scor mediu",         fill:"#faf6fc"},
-    {from:40, to:60,  label:"Scor scăzut",        fill:"#f4ecf8"},
-    {from:20, to:40,  label:"Scor foarte scăzut", fill:"#faf6fc"}
-  ];
-  const lineEnd = compact ? padL + plotW : W - 6;
-  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Grafic scoruri DISC: ${TRAITS.map(t => `${t.name} ${sc[t.k]}`).join(", ")}">`;
-  bands.forEach(b => {
-    s += `<rect x="${padL}" y="${y(b.to)}" width="${plotW}" height="${y(b.from) - y(b.to)}" fill="${b.fill}"/>`;
-    if (!compact) s += `<text class="band-l" x="${padL + plotW + 18}" y="${(y(b.from) + y(b.to)) / 2 + 4}">${b.label}</text>`;
-  });
-  for (let v = 25; v < 100; v += 5) if (v % 20) s += `<line x1="${padL - 4}" x2="${padL}" y1="${y(v)}" y2="${y(v)}" stroke="#cfc3d6"/>`;
-  [20, 40, 60, 80, 100].forEach(v => {
-    const strong = v === 20 || v === 100;
-    s += `<line x1="${padL}" x2="${lineEnd}" y1="${y(v)}" y2="${y(v)}" stroke="${v === 80 ? "#b58cc4" : strong ? "#d9cbe1" : "#dcc4e6"}" stroke-width="${v === 80 ? 2 : 1}"${strong ? "" : ' stroke-dasharray="5 4"'}/>`;
-    s += `<text class="tick" x="${padL - 8}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
-  });
-  const hw = Math.min(plotW / 4 - 12, 118);
-  TRAITS.forEach((t, i) => {
-    s += `<line x1="${x(i)}" x2="${x(i)}" y1="${top}" y2="${bot}" stroke="#e6e1ea"/>`;
-    s += `<rect x="${x(i) - hw / 2}" y="12" width="${hw}" height="30" rx="7" fill="${t.hex}"/>`;
-    s += `<text class="hdr" x="${x(i)}" y="32" text-anchor="middle" fill="${t.txt}">${compact ? t.name : t.name.toUpperCase()}</text>`;
-  });
-  const pts = TRAITS.map((t, i) => [x(i), y(sc[t.k])]);
-  s += `<polyline class="pline" points="${pts.map(p => p.map(n => n.toFixed(1)).join(",")).join(" ")}" fill="none" stroke="#84329b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>`;
-  TRAITS.forEach((t, i) => {
-    const [px, py] = pts[i];
-    s += `<circle class="pt" cx="${px}" cy="${py}" r="10" fill="${t.hex}" stroke="#fff" stroke-width="3" style="animation-delay:${animate ? .25 + i * .15 : 0}s"/>`;
-    s += `<text class="val" x="${px + 16}" y="${py + 6}">${sc[t.k]}</text>`;
-  });
-  s += `</svg>`;
-  wrap.innerHTML = s;
-  if (animate) {
-    const pl = wrap.querySelector(".pline");
-    const L = pl.getTotalLength();
-    pl.style.strokeDasharray = L; pl.style.strokeDashoffset = L;
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      pl.style.transition = "stroke-dashoffset 1.2s ease .35s"; pl.style.strokeDashoffset = 0;
-    }));
-  }
-}
-
-let rz;
-window.addEventListener("resize", () => {
-  clearTimeout(rz);
-  rz = setTimeout(() => { if (document.body.dataset.screen === "results" && lastScores) renderChart(lastScores, false); }, 150);
-});
-window.addEventListener("beforeprint", () => { $("calc").open = true; });
-
-$("printBtn").addEventListener("click", () => { $("calc").open = true; window.print(); });
-
-$("copyBtn").addEventListener("click", () => {
-  const sc = lastScores || computeScores();
-  const lines = [
-    "Test de personalitate DISC · Sfera Business",
-    state.name ? `Nume: ${state.name}` : null,
-    `Data: ${new Date(state.doneAt || Date.now()).toLocaleDateString("ro-RO")}`,
-    "",
-    ...TRAITS.map(t => `${t.name} (${t.k}): ${sc[t.k]} / 100 · ${band(sc[t.k]).label}`),
-    "",
-    "Răspunsuri (afirmație: răspuns): " + state.answers.map((v, i) => `${i + 1}:${v}`).join(", ")
-  ].filter(l => l !== null).join("\n");
-  const done = () => { const b = $("copyBtn"); b.textContent = "Copiat ✓"; setTimeout(() => { b.textContent = "Copiază rezultatele"; }, 1800); };
-  const fallback = () => {
-    const ta = document.createElement("textarea"); ta.value = lines; ta.style.position = "fixed"; ta.style.opacity = "0";
-    document.body.appendChild(ta); ta.select();
-    try { document.execCommand("copy"); done(); } catch(e){}
-    ta.remove();
-  };
-  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(lines).then(done, fallback);
-  else fallback();
-});
-
-let restartArmed = false, restartT;
-$("restartBtn").addEventListener("click", () => {
-  const b = $("restartBtn");
-  if (!restartArmed) {
-    restartArmed = true; b.textContent = "Sigur? Apasă din nou";
-    restartT = setTimeout(() => { restartArmed = false; b.textContent = "Reia testul"; }, 3000);
-    return;
-  }
-  clearTimeout(restartT); restartArmed = false; b.textContent = "Reia testul";
-  demo = false; reset(); save(); initIntro(); show("intro");
-});
-
-/* ---------- boot ---------- */
-initIntro();
-if (location.hash === "#demo") {
-  demo = true;
-  state.answers = Array.from({length:N}, () => 1 + Math.floor(Math.random() * 5));
-  state.done = true; state.doneAt = Date.now();
-  showResults();
-}
 })();
 </script>
 </body>
